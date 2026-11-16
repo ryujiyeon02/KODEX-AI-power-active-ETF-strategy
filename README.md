@@ -8,6 +8,39 @@
 
 [![AI전력핵심설비 액티브 ETF 팩트시트 2면](docs/assets/factsheet-02.png)](docs/AI전력핵심설비액티브factsheet.pdf)
 
+## 한눈에 보기
+
+| 항목 | 내용 |
+| --- | --- |
+| 구분 | 2026-1 개인 프로젝트 |
+| 전략 | KODEX AI전력핵심설비 ETF의 실제 KRX PDF 바스켓을 벤치마크로 복제하고, 같은 구성종목 안에서 `ConsensusScore`가 높은 종목을 더 담는 액티브 오버레이 |
+| 비중 산출 | 주간 리밸런싱, PDF 대비 active MVO (TE 예산 20%, 종목당 1~50%, 편도 회전율 30% 이하) |
+| 평가 기간 | 2024-07-10 ~ 2026-05-06 (441거래일), 매매비용·ETF 총보수 반영 |
+| 핵심 결과 | 누적수익률 664.1% vs PDF 벤치마크 495.9% · Sharpe 3.94 vs 3.28 · MDD -32.9% vs -36.7% · IR 0.84 |
+| 한계 | ETF 상장 이후 표본이 짧아 완전한 out-of-sample 검증은 아님 |
+
+## English summary
+
+A benchmark-relative active overlay on the **KODEX AI Power Core Equipment ETF** (2026-1, individual project).
+
+- **Benchmark:** the ETF's actual daily KRX PDF basket. The replication applies the previous day's weights to each day's returns, so it uses no future information.
+- **Signal:** `ConsensusScore` is the equal-weighted average of three cross-sectional z-scores: 1-month EPS revision, target-price upside and analyst rating. Weekly rank IC is about 4–5% for each.
+- **Weights:** weekly active mean-variance optimization against the PDF basket.
+  - Ex-ante tracking-error budget: 20%.
+  - Per-stock weight: 1% minimum, 50% maximum.
+  - One-way turnover: 30% cap.
+- **Costs & checks:** commissions, slippage, sell tax and the ETF's 0.4586% annual fee are included. Capacity, dynamic slippage, block bootstrap and probabilistic/deflated Sharpe tests are also run.
+
+| Backtest (2024-07-10 – 2026-05-06, 441 trading days, after costs) | Strategy | PDF benchmark |
+|---|---:|---:|
+| Cumulative return | 664.1% | 495.9% |
+| Annualized return | 219.6% | 177.3% |
+| Sharpe | 3.94 | 3.28 |
+| Max drawdown | −32.9% | −36.7% |
+| Tracking error / Information ratio | 17.9% / 0.84 | — |
+
+The sample is short and the stocks share one theme, so this is **not an out-of-sample proof of alpha**.
+
 ## 프로젝트에서 수행한 일
 
 - KRX 실제 PDF의 편입 종목과 비중을 수집하고, 당일 수익률에 전일 비중을 적용해 미래정보 편향을 차단한 복제 벤치마크를 구현했습니다.
